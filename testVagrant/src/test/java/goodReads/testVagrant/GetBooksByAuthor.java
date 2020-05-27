@@ -16,17 +16,16 @@ import files.resources;
 import files.utilities;
 
 public class GetBooksByAuthor {
-	 private static Logger log =LogManager.getLogger(GetBooksByAuthor.class.getName());
+	private static Logger log =LogManager.getLogger(GetBooksByAuthor.class.getName());
 
 	public Properties prop;
-	
+
 	@BeforeTest
 	public void InputFile() throws IOException {
 		prop= new Properties();
-		FileInputStream fis= new FileInputStream("C:\\Users\\Anurag Bharti\\eclipse-workspace\\testVagrant\\src\\test\\java\\files\\file.properties");
+		FileInputStream fis= new FileInputStream("C:\\Users\\Anurag Bharti\\git\\testVagrant\\testVagrant\\src\\test\\java\\files\\file.properties");
 		prop.load(fis);	
-		prop.getProperty("searchBy");
-		System.out.println(prop.getProperty("searchBy"));
+	
 	}
 
 	@Test
@@ -35,8 +34,8 @@ public class GetBooksByAuthor {
 		Response resp = given()
 				.queryParam("key", prop.getProperty("key"))
 				.queryParam("page", prop.getProperty("ResultPage"))
-				.queryParam("search[field]", prop.getProperty("searchBy"))
-				.queryParam("q", prop.getProperty("q"))
+				.queryParam("search[field]", prop.getProperty("searchField"))
+				.queryParam("q", prop.getProperty("AuthorName"))
 				.when()
 				.get(resources.getDataResources())
 				.then()
@@ -44,9 +43,9 @@ public class GetBooksByAuthor {
 				.statusCode(200).and()
 				.contentType(ContentType.XML)
 				.extract().response();
-	
+
 		XmlPath response = utilities.rawToXML(resp);
-		
-		log.info(response.get("GoodreadsResponse.search.query"));
+
+		log.debug(response.get("GoodreadsResponse.search.query"));
 	}
 }
