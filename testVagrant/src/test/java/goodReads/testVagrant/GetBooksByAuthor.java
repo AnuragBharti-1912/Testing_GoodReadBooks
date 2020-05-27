@@ -59,7 +59,6 @@ public class GetBooksByAuthor {
 //		XmlPath xml = new XmlPath(respo);
 		XmlPath respon = utilities.rawToXML(resp);
 		
-		//System.out.println(respon.get("GoodreadsResponse.search.query"));
 		log.info("respon.get(\"GoodreadsResponse.search.query\")");
 	}
 
