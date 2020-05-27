@@ -4,10 +4,11 @@ import org.testng.annotations.Test;
 import static com.jayway.restassured.RestAssured.given;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Properties;
 import org.apache.logging.log4j.*;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.path.xml.XmlPath;
@@ -23,19 +24,23 @@ public class GetBooksByAuthor {
 	@BeforeTest
 	public void InputFile() throws IOException {
 		prop= new Properties();
-		FileInputStream fis= new FileInputStream("C:\\Users\\Anurag Bharti\\git\\testVagrant\\testVagrant\\src\\test\\java\\files\\file.properties");
+		//System.getProperty("user.dir");
+		FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\java\\files\\file.properties");
 		prop.load(fis);	
-	
+
 	}
 
-	@Test
-	public void byAuthor() {
+	@Test(dataProvider="getData")
+	public void byAuthor(String searchField, String AuthorName, String ResultPage) 
+	{
 		RestAssured.baseURI=prop.getProperty("URL");
+		log.debug("URL is fetched");
+		
 		Response resp = given()
 				.queryParam("key", prop.getProperty("key"))
-				.queryParam("page", prop.getProperty("ResultPage"))
-				.queryParam("search[field]", prop.getProperty("searchField"))
-				.queryParam("q", prop.getProperty("AuthorName"))
+				.queryParam("page", ResultPage)
+				.queryParam("search[field]", searchField)
+				.queryParam("q", AuthorName)
 				.when()
 				.get(resources.getDataResources())
 				.then()
@@ -45,7 +50,20 @@ public class GetBooksByAuthor {
 				.extract().response();
 
 		XmlPath response = utilities.rawToXML(resp);
+		
+		log.debug("response is extracted to XML from  raw");
+		log.info(response.get("GoodreadsResponse.search.query"));
+	}
+	@DataProvider()
+	public Object[][] getData() {
+		Object[][] data=new Object[2][3];
+		data[0][0]= "all";
+		data[0][1]= "Paulo Coelho";
+		data[0][2]= "1";
+		data[1][0]=	"author";			
+		data[1][1]= "Amish Tripathi";
+		data[1][2]= "2";
+		return data;
 
-		log.debug(response.get("GoodreadsResponse.search.query"));
 	}
 }

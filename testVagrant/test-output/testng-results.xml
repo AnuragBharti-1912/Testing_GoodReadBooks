@@ -1,16 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="0" passed="0">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="16" started-at="2020-05-27T04:14:42Z" finished-at="2020-05-27T04:14:42Z">
+  <suite name="Default suite" duration-ms="5151" started-at="2020-05-27T17:12:35Z" finished-at="2020-05-27T17:12:41Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="16" started-at="2020-05-27T04:14:42Z" finished-at="2020-05-27T04:14:42Z">
+    <test name="Default test" duration-ms="5151" started-at="2020-05-27T17:12:35Z" finished-at="2020-05-27T17:12:41Z">
       <class name="goodReads.testVagrant.GetBooksByAuthor">
-        <test-method status="PASS" signature="InputFile()[pri:0, instance:goodReads.testVagrant.GetBooksByAuthor@247bddad]" name="InputFile" is-config="true" duration-ms="10" started-at="2020-05-27T09:44:42Z" finished-at="2020-05-27T09:44:42Z">
+        <test-method status="PASS" signature="InputFile()[pri:0, instance:goodReads.testVagrant.GetBooksByAuthor@6c40365c]" name="InputFile" is-config="true" duration-ms="8" started-at="2020-05-27T22:42:35Z" finished-at="2020-05-27T22:42:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- InputFile -->
+        <test-method status="PASS" signature="byAuthor(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:goodReads.testVagrant.GetBooksByAuthor@6c40365c]" name="byAuthor" duration-ms="3661" started-at="2020-05-27T22:42:36Z" data-provider="getData" finished-at="2020-05-27T22:42:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[all]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Paulo Coelho]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- byAuthor -->
+        <test-method status="PASS" signature="byAuthor(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:goodReads.testVagrant.GetBooksByAuthor@6c40365c]" name="byAuthor" duration-ms="1466" started-at="2020-05-27T22:42:39Z" data-provider="getData" finished-at="2020-05-27T22:42:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[author]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Amish Tripathi]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- byAuthor -->
       </class> <!-- goodReads.testVagrant.GetBooksByAuthor -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
