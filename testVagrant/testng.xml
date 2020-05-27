@@ -4,7 +4,6 @@
   <test name="Test">
     <classes>
       <class name="goodReads.testVagrant.GetBooksByAuthor"/>
-      <class name="goodReads.testVagrant.CarLoan"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
