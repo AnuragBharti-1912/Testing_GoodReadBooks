@@ -11,12 +11,12 @@ Below are the key points:
 
 Parameters used are:
 -----------------------
---q: Here 'author name' is used in this case.
---page: I have used 1 and 2 pages in data provider.
---key: developer key is generated.
---search[field]: all(default) and 'author' is used in data provider.
+--'q': Here 'author name' is used in this case.
+--'page': I have used 1 and 2 pages in data provider.
+--'key': developer key is generated.
+--'search[field]': all(default) and 'author' is used in data provider.
 
 For deployment:
 ----------------
--Unzip the folder and import the project in IDE.
--With the help of maven dependencies will be downloaded and project will be ready.
+--Unzip the folder and import the project in IDE.
+--With the help of maven dependencies will be downloaded and project will be ready.
